@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TestController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +17,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('test', [TestController::class, 'testPage']);
+Route::get('catalog/product', [TestController::class, 'productpage']);
+Route::get('template', [TestController::class, 'templatePage']);
