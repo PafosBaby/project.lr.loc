@@ -20,4 +20,11 @@ class TestController extends Controller
     {
         return view('templates.my-template');
     }
+
+// Домашние Задание №1
+
+public function firstPage(){
+    return view('templates.first-page');
+}
+
 }

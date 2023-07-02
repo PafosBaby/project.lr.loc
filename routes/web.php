@@ -21,3 +21,8 @@ Route::get('/', function () {
 Route::get('test', [TestController::class, 'testPage']);
 Route::get('catalog/product', [TestController::class, 'productpage']);
 Route::get('template', [TestController::class, 'templatePage']);
+
+// Домашние задание №1
+
+
+Route::get('Homework', [TestController::class, 'firstPage']);
