@@ -1,24 +1,24 @@
 @extends('layouts.admin')
 
 @section('content')
-    <h1 class="mb-4">Все жарнры</h1>
-    @if ($categories->count())
+    <h1 class="mb-4">Все Теги</h1>
+    @if ($tags->count())
         <table class="table table-striped">
             <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Жанр книги</th>
+                    <th>Тег</th>
                     <th>Действие</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach ($categories as $cat)
+                @foreach ($tags as $tag)
                     <tr>
-                        <td>{{ $cat->id }}</td>
-                        <td>{{ $cat->name }}</td>
+                        <td>{{ $tag->id }}</td>
+                        <td>{{ $tag->name }}</td>
                         <td class="d-flex">
-                            <a href="{{ route('edit.category', $cat) }}"class='btn btn-sm btn-warning'>Редактировать</a>
-                            <form action="{{ route('delete.category', $cat) }}" method="POST" class="mx-2">
+                            <a href="{{ route('tags.edit', $tag) }}"class='btn btn-sm btn-warning'>Редактировать</a>
+                            <form action="{{ route('tags.destroy', $tag) }}" method="POST" class="mx-2">
                                 @csrf
                                 @method('DELETE')
                                 <button class='btn btn-sm btn-danger btn-remove'>Удалить</button>
@@ -30,7 +30,7 @@
             </tbody>
         </table>
     @else()
-        <h2>Пока нет не одного жанра!</h2>
+        <h2>Пока нет не одного ТЕГА!</h2>
     @endif()
 @endsection
 

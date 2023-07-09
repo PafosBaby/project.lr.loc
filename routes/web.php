@@ -1,8 +1,10 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\TagController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -20,22 +22,39 @@ use Illuminate\Support\Facades\Route;
  * Страница сайта
  */
 Route::get('/', [HomeController::class, 'mainPage']);
-Route::get('blog-page', [HomeController::class, 'blogPage']);
+Route::get('blog-page/{categorySlug}', [HomeController::class, 'blogPage'])->name('app.blog.category');
+Route::get('blog-page/{categorySlug}/{articleSlug}', [HomeController::class,'articlePage'])->name('app.blog.article');
 
 /**
  * Страница Админки
  */
+Route::prefix('admin')->group(function(){
+    Route::get('/', [AdminController::class, 'dashboard'])->name('admin');
+    /**
+    * CRUD для категорий
+    */
+    Route::prefix('categories')->group(function(){
+    Route::get('/',[CategoryController::class, 'allCategoriesPage'])->name('genre');
+    Route::get('create',[CategoryController::class, 'createCategory'])->name('genre.create');
+    Route::post('create',[CategoryController::class, 'storeCategory'])->name('store.category');
+    Route::get('{category}/edit',[CategoryController::class, 'editCategory'])->name('edit.category');
+    Route::put('{category}/edit',[CategoryController::class, 'updateCategory'])->name('update.category');
+    Route::delete('{category}',[CategoryController::class, 'deleteCategory'])->name('delete.category');
+    });
 
- Route::get('admin', [AdminController::class, 'dashboard'])->name('admin');
+    /**
+    * CRUD для новостей
+    */
+    Route::resource('articles', ArticleController::class);
+    Route::get('articles/{article}/remove-image',[ArticleController::class, 'removeImage'])->name('admin.articles.remove-img');
 
- /**
- * CRUD для категорий
- */
+       /**
+    * CRUD для TAG
+    */
 
- Route::get('admin/categories',[CategoryController::class, 'allCategoriesPage'])->name('genre');
- Route::get('admin/categories/create',[CategoryController::class, 'createCategory'])->name('genre.create');
- Route::post('admin/categories/create',[CategoryController::class, 'storeCategory'])->name('store.category');
- Route::get('admin/categories/{category}/edit',[CategoryController::class, 'editCategory'])->name('edit.category');
- Route::put('admin/categories/{category}/edit',[CategoryController::class, 'updateCategory'])->name('update.category');
- Route::delete('admin/categories/{category}',[CategoryController::class, 'deleteCategory'])->name('delete.category');
+    Route::resource('tags',TagController ::class);
+});
+
+
+
 

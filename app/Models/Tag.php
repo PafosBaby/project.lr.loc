@@ -1,20 +1,19 @@
 <?php
 
 namespace App\Models;
-
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Category extends Model
+class Tag extends Model
 {
     use HasFactory,  HasSlug;
-    protected $fillable = ['name','slug'];
+   protected $fillable = ['name', 'slug'];
 
-    public function articles(){
-        return $this->hasMany(Article::class);
-    }
+   public function articles(){
+    return $this->belongsToMany(Article::class);
+}
 
     public function getSlugOptions() : SlugOptions
     {
@@ -22,6 +21,4 @@ class Category extends Model
             ->generateSlugsFrom('name')
             ->saveSlugsTo('slug');
     }
-
-
 }

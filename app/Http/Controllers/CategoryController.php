@@ -22,7 +22,7 @@ class CategoryController extends Controller
     public function storeCategory(Request $request)
     {
         $request->validate([
-            'name' => ['required', 'min:2', 'max:20', 'unique:categories']
+            'name' => ['required', 'min:2', 'max:20', 'regex:/^[a-zA-Zа-яА-Я]+$/u','unique:categories']
         ]);
         //dd($request->all());
 
@@ -42,14 +42,14 @@ class CategoryController extends Controller
     public function updateCategory(Request $request, Category $category)
     {
         $request->validate([
-            'name' => ['required', 'min:2', 'max:20', 'unique:categories,name,' . $category->id]
+            'name' => ['required', 'min:2', 'max:20','unique:categories,name,' . $category->id]
         ]);
 
         $category->update($request->all());
         return redirect()->route('genre');
     }
 
-    public function deleteCategory( Category $category)
+    public function deleteCategory(Category $category)
     {
         $category->delete();
         return back();
