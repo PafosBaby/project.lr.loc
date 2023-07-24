@@ -34,6 +34,11 @@ class Article extends Model
         return $this->belongsToMany(Tag::class);
     }
 
+    public function comments()
+    {
+        return $this->hasMany(ArticleComment::class);
+    }
+
     public function getSlugOptions(): SlugOptions
     {
         return SlugOptions::create()
@@ -47,7 +52,7 @@ class Article extends Model
         $article = new static;
         $article->fill($fields);
         $article->publich_at = date('Y-m-d');
-        if (isset($fields['is_active'])) {
+        if (array_key_exists('is_active', $fields)) {
             $article->is_active = 1;
         } else {
             $article->is_active = 0;

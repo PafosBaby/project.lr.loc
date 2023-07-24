@@ -1,5 +1,5 @@
 @extends('layouts.admin')
 
 @section('content')
-<h1>Console</h1>
+<h1>{{__("Console")}}</h1>
 @endsection

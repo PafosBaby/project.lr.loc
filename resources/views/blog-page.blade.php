@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+
+
 @section('content')
     <div class="clearfix"></div>
 
@@ -20,10 +22,10 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-6">
-                        <h3>Blog Full Width</h3>
+                        <h3>{{__("News Blog")}}</h3>
                     </div>
                     <div class="col-md-6 text-right">
-                        <div class="pagenation_links"><a href="{{ url('/') }}">Главная</a><i> / </i>
+                        <div class="pagenation_links"><a href="{{ url('/') }}">{{__("Home")}}</a><i> / </i>
                             <a href="index.html">{{ $category->name }}</a>
                         </div>
                     </div>
@@ -38,40 +40,43 @@
     <section class="sec-padding">
         <div class="container">
             <div class="row">
-
-                @foreach ($category->articles as $article)
-                    <!--Start item-->
-                    <div class="col-md-12 bmargin">
-                        <div class="blog-holder-12">
-                            <div class="image-holder">
-                                <div class="overlay bg-opacity-1">
-                                    <a href="#">
-                                        <div class="icon"><i class="fa fa-search"></i></div>
+                 @foreach ($category->articles as $article)
+                    @if ( $article->is_active != null)
+                        <!--Start item-->
+                        <div class="col-md-12 bmargin">
+                            <div class="blog-holder-12">
+                                <div class="image-holder">
+                                    <div class="overlay bg-opacity-1">
+                                        <a href="#">
+                                            <div class="icon"><i class="fa fa-search"></i></div>
+                                        </a>
+                                        {!! $article->getDate() !!}
+                                    </div>
+                                    <img class="img-responsive img-fluid" " alt="{{ $article->title }}" src="{{ $article->getImage() }}">
+                                        </div>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                    <br />
+                                    <a href="{{ route('app.blog.article', [$category->slug, $article->slug]) }}">
+                                        <h3 class="less-mar1">
+                                            {{ $article->title }}
+                                        </h3>
                                     </a>
-                                    {!! $article->getDate() !!}
+                                    <div class="blog-post-info"> <span><i class="fa fa-user"></i></span> <span><i
+                                                class="fa fa-comments-o"></i> {{ $article->comments->count() }} {{__('Comments')}}</span> </div>
+                                    <br />
+                                    <p>{{ $article->short_description }}</p>
+                                    <br />
+                                    <a class="btn btn-orange-2 dark btn-round" href="{{ route('app.blog.article', [$category->slug, $article->slug]) }}">{{__("Read")}}</a>
                                 </div>
-                                <img class="img-responsive" alt="{{ $article->title }}" src="{{ $article->getImage() }}">
-                            </div>
-                        </div>
-                        <div class="clearfix"></div>
-                        <br />
-                        <a href="{{route('app.blog.article',[$category->slug, $article->slug])}}">
-                            <h3 class="less-mar1">
-                                {{ $article->title }}
-                            </h3>
-                        </a>
-                        <div class="blog-post-info"> <span><i class="fa fa-user"></i> By Benjamin</span> <span><i
-                                    class="fa fa-comments-o"></i> 15 Comments</span> </div>
-                        <br />
-                        <p>{{ $article->short_description }}</p>
-                        <br />
-                        <a class="btn btn-orange-2 dark btn-round" href="{{route('app.blog.article',[$category->slug, $article->slug])}}">Читать</a>
-                    </div>
-                    <!--end item-->
+                                <!--end item-->
 
-                    <div class="clearfix"></div>
-                    <div class="col-divider-margin-4"></div>
+                                <div class="clearfix"></div>
+                                <div class="col-divider-margin-4"></div>
+                        @else()
+                    @endif()
                 @endforeach
+
 
             </div>
 

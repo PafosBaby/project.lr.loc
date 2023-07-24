@@ -28,4 +28,12 @@ class HomeController extends Controller
             'article' => Article::where("slug",$articleSlug )->first()
         ]);
     }
+
+    // Изменение языка
+    public function changeLocale($locale){
+        if($locale != null){
+           session(['lang'=> $locale]);
+        }
+        return back();
+    }
 }

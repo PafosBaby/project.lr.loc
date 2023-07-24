@@ -1,13 +1,13 @@
 @extends('layouts.admin')
 
 @section('content')
-    <h1 class="mb-4">{{__("All genres")}}</h1>
+    <h1 class="mb-4">{{__("All Roles")}}</h1>
     @if ($categories->count())
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th>ID</th>
-                    <th>{{__("Genre")}}</th>
+                    <th>{{__("Role")}}</th>
+                    <th>{{__("Rights")}}</th>
                     <th>{{__("Action")}}</th>
                 </tr>
             </thead>
@@ -17,7 +17,7 @@
                         <td>{{ $cat->id }}</td>
                         <td>{{ $cat->name }}</td>
                         <td class="d-flex">
-                            <a href="{{ route('edit.category', $cat) }}"class='btn btn-sm btn-warning'>{{__("Edit")}}</a>
+                            <a href="{{ route('edit.category', $cat) }}"class='btn btn-sm btn-warning'>{{___("Edit")}}</a>
                             <form action="{{ route('delete.category', $cat) }}" method="POST" class="mx-2">
                                 @csrf
                                 @method('DELETE')
@@ -30,7 +30,7 @@
             </tbody>
         </table>
     @else()
-        <h2>{{__("There is not one genre yet")}}!</h2>
+        <h2>{{__("There is not one role yet")}}!</h2>
     @endif()
 @endsection
 

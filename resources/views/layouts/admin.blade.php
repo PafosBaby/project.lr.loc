@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{app()->getLocale()}}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,6 +18,6 @@
       <script src="{{asset('admin-assets/js/jquery-3.7.0.min.js')}}"></script>
         <script src="{{asset('admin-assets/js/bootstrap.bundle.js')}}"></script>
         @yield('scripts')
-        
+
 </body>
 </html>

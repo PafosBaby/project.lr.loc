@@ -5,16 +5,20 @@
     <div class="container">
       <div class="topbar-left-items">
         <ul class="toplist toppadding pull-left paddtop1">
-          <li class="rightl">Customer Care</li>
-          <li>(888) 123-4567</li>
+            <li>
+                <a href="{{route('app.change-locale', 'en')}}"@if(app()->getLocale()=='en') class="active"@endif>En</a>
+              </li>
+              <li>
+                <a href="{{route('app.change-locale', 'ru')}}" @if(app()->getLocale()=='ru') class="active"@endif>Ru</a>
+              </li>
         </ul>
       </div>
     <!--end left-->
 
       <div class="topbar-right-items pull-right">
         <ul class="toplist toppadding">
-          <li class="lineright"><a href="#">Login</a></li>
-          <li class="lineright"><a href="#">Register</a></li>
+          <li class="lineright"><a href="{{route('login')}}">{{__("Login")}}</a></li>
+          <li class="lineright"><a href="{{route('register')}}">{{__("Register")}}</a></li>
           <li><a href="https://www.facebook.com/codelayers"><i class="fa fa-facebook"></i></a></li>
           <li><a href="https://twitter.com/codelayers"><i class="fa fa-twitter"></i></a></li>
           <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
@@ -35,10 +39,10 @@
         <div id="navbar-collapse-grid" class="navbar-collapse collapse pull-right">
           <ul class="nav navbar-nav">
             <li class="dropdown">
-                <a href="{{url('/')}}" class="dropdown-toggle active">Главная</a>
+                <a href="{{url('/')}}" class="dropdown-toggle active">{{__("Home")}}</a>
             </li>
-            <li class="dropdown yamm-fw"><a href="index5.html" class="dropdown-toggle">Layouts</a>
-              <ul class="dropdown-menu">
+            <li class="dropdown yamm-fw"><a href="index5.html" class="dropdown-toggle">{{__("Layouts")}}</a>
+              <!--<ul class="dropdown-menu">
                 <li class="grid-demo">
                   <div class="row">
                     <ul class="col-sm-6 col-md-4 list-unstyled ">
@@ -91,12 +95,11 @@
                     </ul>
                   </div>
                 </li>
-              </ul>
+              </ul>-->
             </li>
-            <li class="dropdown yamm-fw"> <a href="about2.html" class="dropdown-toggle">Pages</a>
-              <ul class="dropdown-menu">
+            <li class="dropdown yamm-fw"> <a href="about2.html" class="dropdown-toggle">{{__("Pages")}}</a>
+              <!--<ul class="dropdown-menu">
                 <li>
-                  <!-- Content container to add padding -->
                   <div class="yamm-content">
                     <div class="row">
                       <ul class="col-sm-6 col-md-3 list-unstyled ">
@@ -146,12 +149,11 @@
                     </div>
                   </div>
                 </li>
-              </ul>
+              </ul>-->
             </li>
-            <li class="dropdown yamm-fw"> <a href="message-boxes.html" class="dropdown-toggle">Features</a>
-              <ul class="dropdown-menu">
+            <li class="dropdown yamm-fw"> <a href="message-boxes.html" class="dropdown-toggle">{{__("Features")}}</a>
+              <!--<ul class="dropdown-menu">
                 <li>
-                  <!-- Content container to add padding -->
                   <div class="yamm-content">
                     <div class="row">
                       <ul class="col-sm-6 col-md-4 list-unstyled ">
@@ -216,10 +218,10 @@
                     </div>
                   </div>
                 </li>
-              </ul>
+              </ul>-->
             </li>
-            <li class="dropdown"> <a href="portfolio-three.html" class="dropdown-toggle">Portfolio</a>
-              <ul class="dropdown-menu" role="menu">
+            <li class="dropdown"> <a href="portfolio-three.html" class="dropdown-toggle">{{__("Portfolio")}}</a>
+              <!--<ul class="dropdown-menu" role="menu">
                 <li> <a href="portfolio-one.html">Single Item</a> </li>
                 <li> <a href="portfolio-two.html">Portfolio Columns 2</a> </li>
                 <li> <a href="portfolio-three.html">Portfolio Columns 3</a> </li>
@@ -236,12 +238,12 @@
                     <li><a href="#">Menu Item 3</a></li>
                   </ul>
                 </li>
-              </ul>
+              </ul>-->
             </li>
-            <li class="dropdown yamm-fw"> <a href="message-boxes.html" class="dropdown-toggle">Shortcodes</a>
-              <ul class="dropdown-menu">
+            <li class="dropdown yamm-fw"> <a href="message-boxes.html" class="dropdown-toggle">{{__("Shortcodes")}}</a>
+              <!--<ul class="dropdown-menu">
                 <li>
-                  <!-- Content container to add padding -->
+
                   <div class="yamm-content">
                     <div class="row">
                       <ul class="col-sm-6 col-md-3 list-unstyled ">
@@ -287,23 +289,23 @@
                     </div>
                   </div>
                 </li>
-              </ul>
+              </ul>-->
             </li>
-            <li class="dropdown"> <a href="blog.html" class="dropdown-toggle">Новости</a>
+            <li class="dropdown"> <a href="blog.html" class="dropdown-toggle">{{__("News")}}</a>
               <ul class="dropdown-menu three" role="menu">
                 @foreach ($categories as $cat)
                 <li>
-                    <a href="{{route('app.blog.category', $cat->slug)}}">{{$cat->name}}</a> \
+                    <a href="{{route('app.blog.category', $cat->slug)}}">{{$cat->name}}</a>
                 </li>
                 @endforeach
               </ul>
             </li>
-            <li class="dropdown"> <a href="contact.html" class="dropdown-toggle align-1">Contact</a>
-              <ul class="dropdown-menu align-1 two" role="menu">
+            <li class="dropdown"> <a href="contact.html" class="dropdown-toggle align-1">{{__("Contact")}}</a>
+              <!--<ul class="dropdown-menu align-1 two" role="menu">
                 <li> <a href="contact.html">Contact Variation 1</a> </li>
                 <li> <a href="contact2.html">Contact Variation 2</a> </li>
                 <li> <a href="contact3.html">Contact Variation 3</a> </li>
-              </ul>
+              </ul>-->
             </li>
           </ul>
         </div>

@@ -1,17 +1,17 @@
 @extends('layouts.admin')
 
 @section('content')
-    <h1 class="mb-4">Новая Статья</h1>
+    <h1 class="mb-4">{{__("New Article")}}</h1>
 
 
 
     <form action="{{ route('articles.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="form-group mb-3">
-            <label for="category_id">Категория</label>
+            <label for="category_id">{{__("Category")}}</label>
 
             <select name="category_id" id="category_id" class="form-select">
-                <option value="">Выберите категорию</option>
+                <option value="">{{__("Select a category")}}</option>
                 @foreach ($categories as $cat)
                     <option value="{{ $cat->id }}" @if ($cat->id == old('category_id')) selected @endif>
                         {{ $cat->name }}
@@ -21,7 +21,7 @@
 
 
             <div class="form-group mb-3">
-                <label for="title">Название</label>
+                <label for="title">{{__("Title")}}</label>
                 <input type="text" id="title" name="title" class="form-control" value="{{ old('title') }}">
                 @error('title')
                     <small class="text-danger">{{ $message }}</small>
@@ -29,23 +29,23 @@
             </div>
 
             <div class="form-group mb-3">
-                <label for="short_description">Короткое описание</label>
+                <label for="short_description">{{__("Short description")}}</label>
                 <textarea name="short_description" id="short_description" class="form-control">{{ old('short_description') }}</textarea>
             </div>
 
             <div class="form-group mb-3">
-                <label for="description">Описание</label>
+                <label for="description">{{__("Description")}}</label>
                 <textarea name="description" id="description" class="form-control">{{ old('description') }}</textarea>
             </div>
 
 
             <div class="form-group mb-3">
-                <label for="title">Изображение статьи</label>
+                <label for="title">{{__("Article Image")}}</label>
                 <input type="file" id="image_path" name="image_path" class="form-control">
             </div>
 
             <div class="form-group mb-3">
-                <p>TAG</p>
+                <p>{{__("Tags")}}</p>
                 <div class="d-flex">
                     @foreach ($tags as $tag)
                         <div class="form-check mb-3 mx-3">
@@ -63,10 +63,10 @@
                 <input class="form-check-input" type="checkbox" name="is_active" id="is_active"
                     @if (old('is_active') == 1) checked @endif>
                 <label class="form-check-label" for="is_active">
-                    Показать статью
+                   {{__("Show article")}}
                 </label>
             </div>
         </div>
-        <button class="btn btn-primary">Создать</button>
+        <button class="btn btn-primary">{{__("To create")}}</button>
     </form>
 @endsection

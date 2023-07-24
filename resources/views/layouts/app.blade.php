@@ -5,7 +5,7 @@
 <!--[if (gt IE 9)|!(IE)]><!-->
 <!--<![endif]-->
 <!--<![endif]-->
-<html lang="en">
+<html lang="{{ app()->getLocale() }}">
 
 <head>
     <title>Hasta - Responsive MultiPurpose HTML5 Template</title>
@@ -40,45 +40,44 @@
     <link rel="stylesheet" href="{{ asset('assets/css/layouts.css') }}" type="text/css" />
     <link rel="stylesheet" href="{{ asset('assets/css/shortcodes.css') }}" type="text/css" />
     <link rel="stylesheet" media="screen" href="{{ asset('assets/css/responsive-leyouts.css') }}" type="text/css" />
-    <link rel="stylesheet" href="{{ asset('assets/js/masterslider/style/masterslider.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/css/font-awesome/css/font-awesome.min.css') }}">
     <link rel="stylesheet" type="text/css"
         href="{{ asset('assets/css/Simple-Line-Icons-Webfont/simple-line-icons.css') }}" media="screen" />
     <link rel="stylesheet" href="{{ asset('assets/css/et-line-font/et-line-font.css') }}">
-    <link href="{{ asset('assets/js/animations/css/animations.min.css') }}" rel="stylesheet" type="text/css"
-        media="all" />
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/js/cubeportfolio/cubeportfolio.min.css') }}">
-    <link href="{{ asset('assets/js/owl-carousel/owl.carousel.css') }}" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('assets/js/ytplayer/ytplayer.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{asset('assets/js/cubeportfolio/cubeportfolio.min.css')}}">
+    <link rel="stylesheet" href="{{ asset('assets/css/custom-styles.css') }}">
 
+    <link rel="stylesheet" type="text/css" href="{{asset("assets/js/smart-forms/smart-forms.css")}}">
 
+    <!-- стили главная -->
+    @yield('blog-style')
     <!-- Remove the below comments to use your color option -->
-    <link rel="stylesheet" href="{{ asset('assets/css/colors/lightblue.css') }}" />
-    <link rel="stylesheet" href="{{ asset('assets/css/colors/orange.css') }}" />
-    <link rel="stylesheet" href="{{ asset('assets/css/colors/green.css') }}" />
-    <link rel="stylesheet" href="{{ asset('assets/css/colors/pink.css') }}" />
-    <link rel="stylesheet" href="{{ asset('assets/css/colors/red.css') }}" />
-    <link rel="stylesheet" href="{{ asset('assets/css/colors/purple.css') }}" />
-    <link rel="stylesheet" href="{{ asset('assets/css/colors/bridge.css') }}" />
-    <link rel="stylesheet" href="{{ asset('assets/css/colors/yellow.css') }}" />
-    <link rel="stylesheet" href="{{ asset('assets/css/colors/violet.css') }}" />
-    <link rel="stylesheet" href="{{ asset('assets/css/colors/cyan.css') }}" />
-    <link rel="stylesheet" href="{{ asset('assets/css/colors/mossgreen.css') }}" />
+    <!--<link rel="stylesheet" href="{{ asset('assets/css/colors/lightblue.css') }}" /> -->
+    <!--<link rel="stylesheet" href="{{ asset('assets/css/colors/orange.css') }}" /> -->
+    <!--<link rel="stylesheet" href="{{ asset('assets/css/colors/green.css') }}" /> -->
+    <!--<link rel="stylesheet" href="{{ asset('assets/css/colors/pink.css') }}" /> -->
+    <!--<link rel="stylesheet" href="{{ asset('assets/css/colors/red.css') }}" /> -->
+    <!--<link rel="stylesheet" href="{{ asset('assets/css/colors/purple.css') }}" /> -->
+    <!--<link rel="stylesheet" href="{{ asset('assets/css/colors/bridge.css') }}" /> -->
+    <!--<link rel="stylesheet" href="{{ asset('assets/css/colors/yellow.css') }}" /> -->
+    <!--<link rel="stylesheet" href="{{ asset('assets/css/colors/violet.css') }}" /> -->
+    <!--<link rel="stylesheet" href="{{ asset('assets/css/colors/cyan.css') }}" /> -->
+    <!--<link rel="stylesheet" href="{{ asset('assets/css/colors/mossgreen.css') }}" /> -->
 
     <!-- just remove the below comments witch bg patterns you want to use -->
-    <link rel="stylesheet" href="{{ asset('assets/css/bg-patterns/pattern-default.css') }}" />
-    <link rel="stylesheet" href="{{ asset('assets/css/bg-patterns/pattern-1.css') }}" />
-    <link rel="stylesheet" href="{{ asset('assets/css/bg-patterns/pattern-2.css') }}" />
-    <link rel="stylesheet" href="{{ asset('assets/css/bg-patterns/pattern-3.css') }}" />
-    <link rel="stylesheet" href="{{ asset('assets/css/bg-patterns/pattern-4.css') }}" />
-    <link rel="stylesheet" href="{{ asset('assets/css/bg-patterns/pattern-5.css') }}" />
-    <link rel="stylesheet" href="{{ asset('assets/css/bg-patterns/pattern-6.css') }}" />
-    <link rel="stylesheet" href="{{ asset('assets/css/bg-patterns/pattern-7.css') }}" />
-    <link rel="stylesheet" href="{{ asset('assets/css/bg-patterns/pattern-8.css') }}" />
-    <link rel="stylesheet" href="{{ asset('assets/css/bg-patterns/pattern-9.css') }}" />
-    <link rel="stylesheet" href="{{ asset('assets/css/bg-patterns/pattern-10.css') }}" />
-    <link rel="stylesheet" href="{{ asset('assets/css/bg-patterns/pattern-11.css') }}" />
-    <link rel="stylesheet" href="{{ asset('assets/css/bg-patterns/pattern-12.css') }}" />
+    <!--<link rel="stylesheet" href="{{ asset('assets/css/bg-patterns/pattern-default.css') }}" /> -->
+    <!--<link rel="stylesheet" href="{{ asset('assets/css/bg-patterns/pattern-1.css') }}" /> -->
+    <!--<link rel="stylesheet" href="{{ asset('assets/css/bg-patterns/pattern-2.css') }}" /> -->
+    <!--<link rel="stylesheet" href="{{ asset('assets/css/bg-patterns/pattern-3.css') }}" /> -->
+    <!--<link rel="stylesheet" href="{{ asset('assets/css/bg-patterns/pattern-4.css') }}" /> -->
+    <!--<link rel="stylesheet" href="{{ asset('assets/css/bg-patterns/pattern-5.css') }}" /> -->
+    <!--<link rel="stylesheet" href="{{ asset('assets/css/bg-patterns/pattern-6.css') }}" /> -->
+    <!--<link rel="stylesheet" href="{{ asset('assets/css/bg-patterns/pattern-7.css') }}" /> -->
+    <!--<link rel="stylesheet" href="{{ asset('assets/css/bg-patterns/pattern-8.css') }}" /> -->
+    <!--<link rel="stylesheet" href="{{ asset('assets/css/bg-patterns/pattern-9.css') }}" /> -->
+    <!--<link rel="stylesheet" href="{{ asset('assets/css/bg-patterns/pattern-10.css') }}" /> -->
+    <!--<link rel="stylesheet" href="{{ asset('assets/css/bg-patterns/pattern-11.css') }}" /> -->
+    <!--<link rel="stylesheet" href="{{ asset('assets/css/bg-patterns/pattern-12.css') }}" /> -->
 </head>
 
 <body>
@@ -86,7 +85,6 @@
 
         @include('layouts.app-templates.header')
         @yield('content')
-
         @include('layouts.app-templates.footer')
         <div class="clearfix"></div>
 
@@ -120,43 +118,22 @@
     <!-- ========== Js Files ========== -->
 
     <script type="text/javascript" src="{{ asset('assets/js/universal/jquery.js') }}"></script>
+    @yield('home-script')
     <script src="{{ asset('assets/js/bootstrap/bootstrap.min.js') }}" type="text/javascript"></script>
     <script src="{{ asset('assets/js/mainmenu/customeUI.js') }}"></script>
     <script src="{{ asset('assets/js/mainmenu/jquery.sticky.js') }}"></script>
-    <script src="{{ asset('assets/js/masterslider/masterslider.min.js') }}"></script>
-    <script type="text/javascript">
-        (function($) {
-            "use strict";
-            var slider = new MasterSlider();
-            // adds Arrows navigation control to the slider.
-            slider.control('arrows');
-            slider.control('bullets');
-
-            slider.setup('masterslider', {
-                width: 1600, // slider standard width
-                height: 650, // slider standard height
-                space: 0,
-                speed: 45,
-                layout: 'boxed',
-                loop: true,
-                preload: 0,
-                autoplay: true,
-                view: "parallaxMask"
-            });
-        })(jQuery);
-    </script>
-    <script type="text/javascript" src="{{ asset('assets/js/ytplayer/jquery.mb.YTPlayer.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('assets/js/ytplayer/elementvideo-custom.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('assets/js/ytplayer/play-pause-btn.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('assets/js/cubeportfolio/jquery.cubeportfolio.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('assets/js/cubeportfolio/main.js') }}"></script>
-    <script src="{{ asset('assets/js/animations/js/animations.min.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('assets/js/animations/js/appear.min.js') }}" type="text/javascript"></script>
     <script src="{{ asset('assets/js/scrolltotop/totop.js') }}"></script>
-    <script src="{{ asset('assets/js/owl-carousel/owl.carousel.js') }}"></script>
-    <script src="{{ asset('assets/js/owl-carousel/custom.js') }}"></script>
+
+
+
 
     <script src="{{ asset('assets/js/scripts/functions.js') }}" type="text/javascript"></script>
+
+    <!-- Главная скрипты  -->
+
+
+
+
 
 </body>
 

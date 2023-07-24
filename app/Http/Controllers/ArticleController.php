@@ -15,7 +15,7 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        return view('admin.articles.index',[
+        return view('admin.articles.index', [
             'articles' => Article::all()
         ]);
     }
@@ -25,9 +25,9 @@ class ArticleController extends Controller
      */
     public function create()
     {
-        return view('admin.articles.create',[
+        return view('admin.articles.create', [
             'categories' => Category::all(),
-            'tags'=> Tag::all()->sortBy('name')
+            'tags' => Tag::all()->sortBy('name')
 
         ]);
     }
@@ -50,8 +50,6 @@ class ArticleController extends Controller
         $article->tags()->attach($request->input('tags'));
 
         return redirect()->route('articles.index');
-
-
     }
 
     /**
@@ -67,10 +65,11 @@ class ArticleController extends Controller
      */
     public function edit(Article $article)
     {
-            return view('admin.articles.edit', [
-                'article' => $article,
-                'categories' => Category::all()->sortBy('name'),
-            ]);
+        return view('admin.articles.edit', [
+            'article' => $article,
+            'categories' => Category::all()->sortBy('name'),
+            'tags' => Tag::all()->sortBy('name'),
+        ]);
     }
 
     /**
@@ -78,13 +77,24 @@ class ArticleController extends Controller
      */
     public function update(Request $request, Article $article)
     {
+
         $request->validate([
             'title' => 'required',
             'category_id' => 'required',
         ]);
 
         $article->update($request->all());
+        if (array_key_exists('is_active', $request->all())) {
+            $article->is_active = 1;
+        } else {
+            $article->is_active = 0;
+        }
+        $article->save();
         $article->uploadImage($request->file('image_path'));
+
+
+        $article->tags()->sync($request->input('tags'));
+
         return redirect()->route('articles.index');
     }
 
@@ -99,11 +109,9 @@ class ArticleController extends Controller
     }
 
 
-    public function removeImage(Article $article){
+    public function removeImage(Article $article)
+    {
         $article->removeImage();
         return back();
     }
-
-
-
 }

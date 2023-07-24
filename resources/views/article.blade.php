@@ -4,7 +4,7 @@
     <section>
         <div class="header-inner two">
             <div class="inner text-center">
-                <h4 class="title text-white uppercase">Блог</h4>
+                <h4 class="title text-white uppercase">{{__('Blog')}}</h4>
             </div>
             <div class="overlay bg-opacity-5"></div>
             <img src="http://placehold.it/1920x800" alt="" class="img-responsive" />
@@ -18,12 +18,12 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-6">
-                        <h3>Блог</h3>
+                        <h3>{{__('Blog')}}</h3>
                     </div>
                     <div class="col-md-6 text-right">
                         <div class="pagenation_links">
-                            <a href="{{ url('/') }}">Главная</a><i> / </i>
-                            <a href="#">Блог</a> <i> / </i>
+                            <a href="{{ url('/') }}">{{__('Home')}}</a><i> / </i>
+                            <a href="#">{{__('Blog')}}</a> <i></i>
                         </div>
                     </div>
                 </div>
@@ -51,130 +51,36 @@
                         <a href="#">
                             <h4 class="less-mar1">{{ $article->title }}</h4>
                         </a>
-                        <div class="blog-post-info"> <span><i class="fa fa-user"></i> By Benjamin</span> <span><i
-                                    class="fa fa-comments-o"></i> 15 Comments</span> </div>
+                        <div class="blog-post-info"> <span><i class="fa fa-user"></i></span> <span><i
+                                    class="fa fa-comments-o"></i> {{ $article->comments->count() }} {{__('Comments')}}</span> </div>
                         <br />
                         <p>
                             {{ $article->description }}
                         </p>
+                        <h4 class="less-mar3">{{__('Comments')}} {{ $article->comments->count() }}</h4>
                         <br />
-                        <h4 class="less-mar3"><a href="#">Share this Article</a></h4>
-                        <br />
-                        <ul class="social-icons-2">
-                            <li><a href="https://twitter.com/codelayers"><i class="fa fa-twitter"></i></a></li>
-                            <li><a href="https://www.facebook.com/codelayers"><i class="fa fa-facebook"></i></a></li>
-                            <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                            <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
-                        </ul>
-                        <div class="clearfix"></div>
-                        <br />
-                        <div class="blog1-post-info-box">
-                            <div class="text-box border padding-3">
-                                <div class="iconbox-medium left round overflow-hidden"><img
-                                        src="http://placehold.it/110x110" alt="" class="img-responsive" /></div>
-                                <div class="text-box-right more-padding-2">
-                                    <h4>Charlotte</h4>
-                                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Suspendisse et justo.
-                                        Praesent mattis commodo augue. </p>
-                                    <br />
-                                    <a class="btn btn-border orange-2 btn-small-2" href="#">Read more</a>
+
+                        @foreach ($article->comments as $comment)
+                            <div class="blog1-post-info-box">
+                                <div class="text-box border padding-3">
+                                    <div class="iconbox-medium left round overflow-hidden"><img
+                                            src="http://placehold.it/110x110" alt="" class="img-responsive" /></div>
+                                    <div class="text-box-right more-padding-2">
+                                        <h5 class="less-mar2">{{ $comment->nickname }}</h5>
+                                        <div class="blog1-post-info"> <span>July 15 2015 at 10:30 AM</span></div>
+                                        <p class="paddtop1">{{ $comment->comment }}</p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <!--end item-->
-                        <div class="clearfix"></div>
-                        <br />
-                        <br />
-                        <h4 class="less-mar3"><a href="#">Related Posts</a></h4>
-                        <br />
-                        <div class="col-md-4 bmargin">
-                            <div class="image-holder"><a href="#"><img src="http://placehold.it/1000x800"
-                                        alt="" class="img-responsive" /></a></div>
-                            <div class="clearfix"></div>
-                            <h5 class="dosis uppercase less-mar1"><a href="#">Aliquam ornare</a></h5>
-                            <div class="blog1-post-info"> <span>By John Doe</span><span>May 19</span> </div>
-                        </div>
-                        <!--end item-->
-
-                        <div class="col-md-4 bmargin">
-                            <div class="image-holder"><a href="#"><img src="http://placehold.it/1000x800"
-                                        alt="" class="img-responsive" /></a></div>
-                            <div class="clearfix"></div>
-                            <h5 class="dosis uppercase less-mar1"><a href="#">Aliquam ornare</a></h5>
-                            <div class="blog1-post-info"> <span>By John Doe</span><span>May 19</span> </div>
-                        </div>
-                        <!--end item-->
-
-                        <div class="col-md-4 bmargin">
-                            <div class="image-holder"><a href="#"><img src="http://placehold.it/1000x800"
-                                        alt="" class="img-responsive" /></a></div>
-                            <div class="clearfix"></div>
-                            <h5 class="dosis uppercase less-mar1"><a href="#">Aliquam ornare</a></h5>
-                            <div class="blog1-post-info"> <span>By John Doe</span><span>May 19</span> </div>
-                        </div>
-                        <!--end item-->
+                            <!--end item-->
+                        @endforeach
 
                         <div class="clearfix"></div>
-                        <br />
-                        <br />
-                        <h4 class="less-mar3"><a href="#">3 Comments</a></h4>
-                        <br />
-                        <div class="blog1-post-info-box">
-                            <div class="text-box border padding-3">
-                                <div class="iconbox-medium left round overflow-hidden"><img
-                                        src="http://placehold.it/110x110" alt="" class="img-responsive" /></div>
-                                <div class="text-box-right more-padding-2">
-                                    <h5 class="less-mar2">Charlotte</h5>
-                                    <div class="blog1-post-info"> <span>July 15 2015 at 10:30 AM</span></div>
-                                    <p class="paddtop1">Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
-                                        Suspendisse et justo. Praesent mattis commodo augue. </p>
-                                    <br />
-                                    <a class="btn btn-border orange-2 btn-small-2 " href="#">Reply</a>
-                                </div>
-                            </div>
-                        </div>
-                        <!--end item-->
-
-                        <div class="clearfix"></div>
-                        <br />
-                        <div class="blog1-post-info-box">
-                            <div class="text-box border padding-3">
-                                <div class="iconbox-medium left round overflow-hidden"><img
-                                        src="http://placehold.it/110x110" alt="" class="img-responsive" /></div>
-                                <div class="text-box-right more-padding-2">
-                                    <h5 class="less-mar2">John William</h5>
-                                    <div class="blog1-post-info"> <span>July 15 2015 at 10:30 AM</span></div>
-                                    <p class="paddtop1">Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
-                                        Suspendisse et justo. Praesent mattis commodo augue. </p>
-                                    <br />
-                                    <a class="btn btn-border orange-2 btn-small-2 " href="#">Reply</a>
-                                </div>
-                            </div>
-                        </div>
-                        <!--end item-->
-
-                        <div class="clearfix"></div>
-                        <br />
-                        <div class="blog1-post-info-box less-width pull-right">
-                            <div class="text-box border padding-3">
-                                <div class="iconbox-medium left round overflow-hidden"><img
-                                        src="http://placehold.it/110x110" alt="" class="img-responsive" /></div>
-                                <div class="text-box-right more-padding-2">
-                                    <h5 class="less-mar2">John William</h5>
-                                    <div class="blog1-post-info"> <span>July 15 2015 at 10:30 AM</span></div>
-                                    <p class="paddtop1">Lorem ipsum dolor sit amet, consectetuer adipiscing.</p>
-                                    <br />
-                                    <a class="btn btn-border orange-2 btn-small-2" href="#">Reply</a>
-                                </div>
-                            </div>
-                        </div>
-                        <!--end item-->
-                        <div class="clearfix"></div>
-                        <a class="loadmore-but orange-2" href="#">Load more Comments</a>
+                        <a class="loadmore-but orange-2" href="#">{{__("Load more Comments")}}</a>
                         <div class="smart-forms bmargin">
-                            <h4>Post a Comment</h4>
-                            <form method="post" action="php/smartprocess.php" id="smart-form">
+                            <h4>{{__("Post a Comment")}}</h4>
+                            <form method="POST" action="{{ route('app.article.add-comment', $article) }}" id="smart-form">
+                                @csrf
                                 <div>
                                     <div class="section">
                                         <label class="field prepend-icon">
@@ -186,26 +92,16 @@
 
                                     <div class="section">
                                         <label class="field prepend-icon">
-                                            <input type="email" name="emailaddress" id="emailaddress"
-                                                class="gui-input" placeholder="Email address">
+                                            <input type="email" name="emailaddress" id="emailaddress" class="gui-input"
+                                                placeholder="Email address">
                                             <span class="field-icon"><i class="fa fa-envelope"></i></span> </label>
                                     </div>
                                     <!-- end section -->
 
                                     <div class="section">
                                         <label class="field prepend-icon">
-                                            <input type="text" name="sendersubject" id="sendersubject"
-                                                class="gui-input" placeholder="Enter subjec">
-                                            <span class="field-icon"><i class="fa fa-lightbulb-o"></i></span> </label>
-                                    </div>
-                                    <!-- end section -->
-
-                                    <div class="section">
-                                        <label class="field prepend-icon">
                                             <textarea class="gui-textarea" id="sendermessage" name="sendermessage" placeholder="Enter message"></textarea>
-                                            <span class="field-icon"><i class="fa fa-comments"></i></span> <span
-                                                class="input-hint"> <strong>Hint:</strong> Please enter between 80 - 300
-                                                characters.</span>
+                                            <span class="field-icon"><i class="fa fa-comments"></i></span>
                                         </label>
                                     </div>
                                     <!-- end section -->
@@ -217,8 +113,8 @@
                                 <!-- end .form-body section -->
                                 <div class="form-footer">
                                     <button type="submit" data-btntext-sending="Sending..."
-                                        class="button btn-primary orange-2">Submit</button>
-                                    <button type="reset" class="button"> Cancel </button>
+                                        class="button btn-primary orange-2">{{__("Submit")}}</button>
+
                                 </div>
                                 <!-- end .form-footer section -->
                             </form>
@@ -233,19 +129,19 @@
 
                 <div class="col-md-4 col-sm-12 col-xs-12 bmargin">
                     <div class="col-md-12 col-sm-12 col-xs-12 nopadding bmargin">
-                        <h5>Categories</h5>
+                        <h5>{{__("Categories")}}</h5>
                         <ul class="category-links orange-2">
-                            <li><a href="#">Business</a></li>
-                            <li><a class="active" href="#">Education</a></li>
-                            <li><a href="#">Medical</a></li>
-                            <li><a href="#">Travel</a></li>
-                            <li><a href="#">Photogreaphy</a></li>
+                            <li><a href="#"></a></li>
+                            <li><a class="active" href="#"></a></li>
+                            <li><a href="#"></a></li>
+                            <li><a href="#"></a></li>
+                            <li><a href="#"></a></li>
                         </ul>
                     </div>
                     <div class="clearfix"></div>
                     <br />
                     <div class="col-md-12 col-sm-12 col-xs-12 nopadding bmargin">
-                        <h5>Search</h5>
+                        <h5>{{__("Search")}}</h5>
                         <div class="clearfix"></div>
                         <input class="blog1-sidebar-serch_input" type="search" placeholder="Email Address">
                         <input name="" value="Submit" class="blog1-sidebar-serch-submit" type="submit">
@@ -253,7 +149,7 @@
                     <div class="clearfix"></div>
                     <br />
                     <div class="col-md-12 col-sm-12 col-xs-12 nopadding bmargin">
-                        <h5>Latest Posts</h5>
+                        <h5>{{__("Latest Posts")}}</h5>
                         <div class="clearfix"></div>
                         <div class="sidebar-posts">
                             <div class="image-left"><img src="http://placehold.it/80x80" alt="" /></div>
@@ -290,7 +186,7 @@
                     <div class="clearfix"></div>
                     <br />
                     <div class="col-md-12 col-sm-12 col-xs-12 nopadding bmargin">
-                        <h5>Tags</h5>
+                        <h5>{{__("Tags")}}</h5>
                         <div class="clearfix"></div>
                         <ul class="tags-2">
                             <li><a href="#">Animation</a></li>
@@ -308,7 +204,7 @@
                     <div class="clearfix"></div>
                     <br />
                     <div class="col-md-12 col-sm-12 col-xs-12 nopadding bmargin">
-                        <h5>Featured Works</h5>
+                        <h5>{{__("Featured Works")}}</h5>
                         <div class="clearfix"></div>
                         <ul class="sidebar-works">
                             <li><a href="#"><img src="http://placehold.it/90x90" alt="" /></a></li>
