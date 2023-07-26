@@ -1,21 +1,19 @@
 @extends('layouts.admin')
 
 @section('content')
-    <h1 class="mb-4">{{ __('All Roles') }}</h1>
-    @if ($roles->count())
+    <h1 class="mb-4">Все права</h1>
+    @if ($permissions->count())
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th>{{ __('Role') }}</th>
-                    <th>{{ __('Rights') }}</th>
+                    <th>Права</th>
                     <th>{{ __('Action') }}</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach ($roles as $role)
+                @foreach ($permissions as $perm)
                     <tr>
-                        <td>{{ $role->name }}</td>
-                        <td>...</td>
+                        <td>{{ $perm->name }}</td>
                         <td class="d-flex">
                             ...
                             {{-- <a href="{{ route('edit.category', $cat) }}"class='btn btn-sm btn-warning'>{{___("Edit")}}</a>
@@ -31,7 +29,7 @@
             </tbody>
         </table>
     @else()
-        <h2>{{ __('There is not one role yet') }}!</h2>
+        <h2>Нет не одного разрешения!</h2>
     @endif()
 @endsection
 

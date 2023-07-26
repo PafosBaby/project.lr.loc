@@ -38,16 +38,43 @@
                         <li><a class="dropdown-item" href="{{ route('tags.create') }}">{{__("template.add-tags")}}</a></li>
                     </ul>
                 </li>
-                <!--Roles and perissions-->
+                <!--Roles-->
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                         aria-expanded="false">
-                        {{__("Rights and Roles")}}
+                        {{__("Roles")}}
                     </a>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="{{ route('admin.roles') }}">{{__("Roles")}}</a></li>
+                        <li><a class="dropdown-item" href="{{ route('admin.roles.form') }}">Добавить роль</a></li>
                     </ul>
                 </li>
+
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        Права
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="{{route('admin.permissions')}}">Все Права</a></li>
+                        <li><a class="dropdown-item" href="{{route('admin.permission.form')}}">Добавить Права</a></li>
+                    </ul>
+                </li>
+
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        Пользователи
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="{{route('admin.users')}}">Все Пользователи</a></li>
+                        <li><a class="dropdown-item" href="">Добавить Пользователя</a></li>
+                    </ul>
+                </li>
+
+
             </ul>
             <form class="d-flex" role="search">
                 <input class="form-control me-2" type="search" placeholder="{{__("template.search")}}" aria-label="Search">
