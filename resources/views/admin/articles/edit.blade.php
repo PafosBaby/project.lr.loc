@@ -1,5 +1,5 @@
-@extends('layouts.admin')
 
+@extends('layouts.admin')
 @section('content')
     <h1 class="mb-4">{{ $article->title }}{{__("editing")}}</h1>
 
@@ -76,4 +76,5 @@
         </div>
         <button class="btn btn-primary">{{__("To change")}}</button>
     </form>
+
 @endsection

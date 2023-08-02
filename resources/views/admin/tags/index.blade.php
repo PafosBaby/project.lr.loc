@@ -23,7 +23,6 @@
                                 @method('DELETE')
                                 <button class='btn btn-sm btn-danger btn-remove'>{{__("Delite")}}</button>
                             </form>
-
                         </td>
                     </tr>
                 @endforeach

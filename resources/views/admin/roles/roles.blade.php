@@ -15,16 +15,24 @@
                 @foreach ($roles as $role)
                     <tr>
                         <td>{{ $role->name }}</td>
-                        <td>...</td>
+                        <td>
+                            @if ($role->permissions->count())
+                                @foreach ($role->permissions as $perm)
+                                    @if ($loop->index != $role->permissions->count() - 1)
+                                        {{ $perm->name . ',' }}
+                                    @else
+                                        {{ $perm->name }}
+                                    @endif
+                                @endforeach
+                            @endif
+                        </td>
                         <td class="d-flex">
-                            ...
-                            {{-- <a href="{{ route('edit.category', $cat) }}"class='btn btn-sm btn-warning'>{{___("Edit")}}</a>
-                            <form action="{{ route('delete.category', $cat) }}" method="POST" class="mx-2">
+                            <a href="{{ route('admin.roles.edit', $role) }}"class='btn btn-sm btn-warning'>{{__("To change")}}</a>
+                            <form action="{{ route('admin.roles.delite', $role) }}" method="POST" class="mx-2">
                                 @csrf
                                 @method('DELETE')
                                 <button class='btn btn-sm btn-danger btn-remove'>{{__("Delite")}}</button>
-                            </form> --}}
-
+                            </form>
                         </td>
                     </tr>
                 @endforeach

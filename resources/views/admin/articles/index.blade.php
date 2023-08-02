@@ -9,9 +9,12 @@
                     <th>{{__("Image")}}</th>
                     <th>{{__("Title")}}</th>
                     <th>{{__("Categories")}}</th>
+                    <th>{{__("Tags")}}</th>
                     <th>{{__("Published")}}</th>
                     <th>{{__("Displayed")}}</th>
+                    @hasallroles('admin|author')
                     <th>{{__("Action")}}</th>
+                    @endhasallroles
                 </tr>
             </th>
             <tbody>
@@ -27,13 +30,16 @@
                         <td>{{ $article->isShowing() }}</td>
 
                         <td class="d-flex">
+                            @can('edit news')
                             <a href="{{ route('articles.edit', $article) }}"class='btn btn-sm btn-warning'>{{__("To change")}}</a>
+                            @endcan
+                            @can('delete news')
                             <form action="{{ route('articles.destroy', $article) }}" method="POST" class="mx-2">
                                 @csrf
                                 @method('DELETE')
                                 <button class='btn btn-sm btn-danger btn-remove'>{{__("Delite")}}</button>
                             </form>
-
+                            @endcan
                         </td>
 
                     </tr>

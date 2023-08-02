@@ -84,6 +84,7 @@
     "New Tag":"Новый Тег",
     "Add a Tag":"Добавить Тег",
     "Role":"Роль",
+    "Add Role":"Добавить Роль",
     "Rights":"Права",
     "There is not one role yet":"Пока нет не одной роли",
     "Genre":"Жанр",
@@ -103,5 +104,16 @@
     "Show article":" Показать статью",
     "New Article":"Новая статья",
     "To create":"Создать",
-    "New Role":"Новая Роль"
+    "New Role":"Новая Роль",
+    "Permissions":"Права",
+    "All Permissions":"Все Права",
+    "Add Permission":"Добавить право",
+    "Users":"Пользователи",
+    "All Users":"Все Пользователи",
+    "Add User":"Добавить Пользователя",
+    "Add":"Добавить",
+    "Name":"Добавить Пользователя",
+    "No Users":"Нет пользователей",
+    "No Permissions":"Нет разрешений",
+    "New Permission":"Новое Право"
 }

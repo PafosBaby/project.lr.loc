@@ -14,6 +14,6 @@
                 <small class="text-danger">{{$message}}</small>
             @enderror
         </div>
-        <button class="btn btn-primary">{{__("Add a Genre")}}</button>
+        <button class="btn btn-primary">{{__("Add")}}</button>
     </form>
 @endsection

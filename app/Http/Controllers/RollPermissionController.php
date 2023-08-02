@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Article;
 use Illuminate\Http\Request;
 use PhpParser\Node\Expr\FuncCall;
 use Spatie\Permission\Models\Permission;
@@ -32,6 +33,23 @@ class RollPermissionController extends Controller
         return redirect()->route('admin.roles');
     }
 
+    public function editRole(Role $role){
+        return view('admin.roles.edit', [
+            'role'=>$role,
+            'permissions'=> Permission::all()
+        ]);
+    }
+    public function updateRole(Request $request, Role $role){
+        $request->validate([
+            'name'=> 'required|unique:roles,name,' .$role->id,
+
+        ]);
+
+        $role->update($request->all());
+        $role->syncPermissions($request->permissions);
+        return redirect()->route("admin.roles");
+    }
+
     // Права
 
     public function permissionsPage()
@@ -54,5 +72,15 @@ class RollPermissionController extends Controller
         return redirect()->route('admin.permissions');
     }
 
+    public function deleteRole(Role $role)
+    {
+        $role->delete();
+        return back();
+    }
 
+    public function deletePermission(Permission $permission)
+    {
+        $permission->delete();
+        return back();
+    }
 }

@@ -5,11 +5,14 @@ namespace App\Http\Controllers;
 use App\Models\Article;
 use App\Models\Category;
 use App\Models\Tag;
+
 use Illuminate\Http\Request;
 use PhpParser\Node\Expr\FuncCall;
 
+
 class ArticleController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      */
@@ -25,12 +28,16 @@ class ArticleController extends Controller
      */
     public function create()
     {
+
+
         return view('admin.articles.create', [
             'categories' => Category::all(),
             'tags' => Tag::all()->sortBy('name')
 
         ]);
     }
+
+
 
     /**
      * Store a newly created resource in storage.
@@ -65,6 +72,7 @@ class ArticleController extends Controller
      */
     public function edit(Article $article)
     {
+
         return view('admin.articles.edit', [
             'article' => $article,
             'categories' => Category::all()->sortBy('name'),
@@ -77,7 +85,6 @@ class ArticleController extends Controller
      */
     public function update(Request $request, Article $article)
     {
-
         $request->validate([
             'title' => 'required',
             'category_id' => 'required',
