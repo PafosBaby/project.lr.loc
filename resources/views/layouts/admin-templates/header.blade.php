@@ -81,6 +81,17 @@
                     </ul>
                 </li>
 
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        Товары
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">Все товары</a></li>
+                        <li><a class="dropdown-item" href="{{route('products.create')}}">Добавить</a></li>
+                    </ul>
+                </li>
+
 
             </ul>
             <form class="d-flex" role="search">

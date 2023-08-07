@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Article;
 use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -35,5 +36,17 @@ class HomeController extends Controller
            session(['lang'=> $locale]);
         }
         return back();
+    }
+
+    public function catalogPage(){
+        return  view('catalog',[
+            'products'=> Product::all(),
+        ]);
+    }
+
+    public function productPage(Product  $product){
+        return  view('product-page',[
+            'product'=> $product,
+        ]);
     }
 }

@@ -6,6 +6,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RollPermissionController;
 use App\Http\Controllers\TagController;
 use App\Http\Controllers\UserController;
@@ -34,6 +35,8 @@ Route::middleware(['locale'])->group(function () {
     Route::get('blog-page/{categorySlug}', [HomeController::class, 'blogPage'])->name('app.blog.category');
     Route::get('blog-page/{categorySlug}/{articleSlug}', [HomeController::class, 'articlePage'])->name('app.blog.article');
     Route::post('blog/{article}add-comment', [CommentController::class, 'store'])->name('app.article.add-comment');
+    Route::get('catalog/{product}', [HomeController::class,"productPage"])->name('app.product');
+    Route::get('catalog', [HomeController::class , 'catalogPage'])->name('app.catalog');
     Route::middleware(['guest'])->group(function () {
         Route::get("register", [AuthController::class, 'registerPage'])->name('register');
         Route::post("register", [AuthController::class, 'register'])->name('register.store');
@@ -103,5 +106,11 @@ Route::middleware(['locale'])->group(function () {
             Route::get('{user}/edit', [UserController::class, 'edit'])->name('admin.users.edit');
             Route::put('{user}/edit', [UserController::class, 'update'])->name('admin.users.update');
         });
+
+          /**
+         * CRUD для товаров
+         */
+
+         Route::resource('products', ProductController::class);
     });
 });

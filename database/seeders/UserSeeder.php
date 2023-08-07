@@ -24,13 +24,13 @@ class UserSeeder extends Seeder
         User::create([
             'name'=> 'Olya',
             'email'=> 'Olya@mail.ru',
-            'password'=>Hash::make('11111111'),
+            'password'=>Hash::make('00000000'),
         ]);
 
         User::create([
             'name'=> 'Maxim',
             'email'=> 'Maxim@mail.ru',
-            'password'=>Hash::make('22222222'),
+            'password'=>Hash::make('00000000'),
         ]);
 
     }
